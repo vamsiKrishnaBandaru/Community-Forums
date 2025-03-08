@@ -79,3 +79,7 @@ src/
   - GET /api/forums/:forumId/comments - Get all comments for a forum
   - POST /api/forums/:forumId/comments - Create a new comment
   - DELETE /api/forums/:forumId/comments/:commentId - Delete a comment
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
