@@ -41,7 +41,7 @@ A full-stack web application where users can sign up, create forums, and interac
 
 1. Clone the repository
    ```bash
-   git clone https://github.com/yourusername/community-forums.git
+   git clone https://github.com/vamsiKrishnaBandaru/community-forums.git
    cd community-forums
    ```
 
