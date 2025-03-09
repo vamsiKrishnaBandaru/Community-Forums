@@ -1,4 +1,4 @@
-import axiosInstance from '../../../utils/axiosConfig';
+import axiosInstance from '../../../constants/apiConstants';
 import { API_ENDPOINTS } from '../../../constants/apiConstants';
 
 // Register user

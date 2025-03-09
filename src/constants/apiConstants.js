@@ -1,5 +1,5 @@
 import axios from 'axios';
-import config from './config';
+import config from '../constants/config';
 
 // Create axios instance with base URL from config
 const axiosInstance = axios.create({
@@ -13,6 +13,8 @@ const axiosInstance = axios.create({
 // Add request interceptor to include auth token
 axiosInstance.interceptors.request.use(
   (config) => {
+    console.log('Making request to:', config.baseURL + config.url);
+    
     const user = JSON.parse(localStorage.getItem('user'));
     if (user && user.token) {
       config.headers.Authorization = `Bearer ${user.token}`;
@@ -20,13 +22,17 @@ axiosInstance.interceptors.request.use(
     return config;
   },
   (error) => {
+    console.error('Request error:', error);
     return Promise.reject(error);
   }
 );
 
 // Add response interceptor for error handling
 axiosInstance.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    console.log('Response status:', response.status);
+    return response;
+  },
   (error) => {
     // Handle session expiration
     if (error.response && error.response.status === 401) {
@@ -36,6 +42,7 @@ axiosInstance.interceptors.response.use(
         window.location.href = '/login';
       }
     }
+    console.error('Response error:', error.response?.status, error.message);
     return Promise.reject(error);
   }
 );
